@@ -9,7 +9,7 @@
     <string name="nombre">Nombre</string>
     <string name="cancelar">Cancelar</string>
     <string name="registrar">Registrar</string>
-    <string name="facebook_app_id">FBAPPID</string>
-    <string name="fb_login_protocol_scheme">fb{FBLOGPROSCH}</string>
+    <string name="facebook_app_id">appid</string>
+    <string name="fb_login_protocol_scheme">fbappid</string>
 
 </resources>
