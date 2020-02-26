@@ -35,16 +35,15 @@
         app:layout_constraintEnd_toEndOf="@+id/edUsuarioLayout"
         app:layout_constraintStart_toStartOf="@+id/edUsuarioLayout"
         app:layout_constraintTop_toBottomOf="@+id/edUsuarioLayout"
-        app:passwordToggleDrawable="@drawable/ic_action_pass_visible"
-        app:passwordToggleEnabled="true">
+        app:passwordToggleEnabled="true"
+        app:passwordToggleDrawable="@drawable/ic_action_pass_visible">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/edPassword"
+            android:id="@+id/edPass"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/pass"
-            android:inputType="textPassword"/>
-
+            android:inputType="textPassword" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <Button

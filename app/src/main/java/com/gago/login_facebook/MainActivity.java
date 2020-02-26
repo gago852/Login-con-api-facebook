@@ -19,9 +19,9 @@ import com.google.android.material.textfield.TextInputEditText;
 public class MainActivity extends AppCompatActivity {
 
 
-    private String user, pass;
+    private String user, pass, nombre;
 
-    TextInputEditText edUsuario, edPassword;
+    TextInputEditText edUsuario, edPass;
     Button btRegistrarse, btlogueo;
 
 
@@ -33,30 +33,31 @@ public class MainActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
         edUsuario = findViewById(R.id.edUsuario);
-        edPassword = findViewById(R.id.edPassword);
+        edPass = findViewById(R.id.edPass);
         btlogueo = findViewById(R.id.btLogin);
         btRegistrarse = findViewById(R.id.btRegistrarse);
 
         Intent i = getIntent();
         Log.i("intent", i.toString());
-        Bundle retorno = i.getExtras();
-        user = retorno.getString("usuario","");
-        pass = retorno.getString("password","");
+        Bundle retorno = i.getExtras() == null ? new Bundle() : i.getExtras() ;
+        user = retorno.getString("usuario", "");
+        nombre = retorno.getString("nombre", "");
+        pass = retorno.getString("password", "");
 
 
         btlogueo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (!TextUtils.isEmpty(user) && !TextUtils.isEmpty(pass)) {
-                    if (!TextUtils.isEmpty(edUsuario.getText()) && !TextUtils.isEmpty(edPassword.getText())) {
-                        if (user.contentEquals(edUsuario.getText()) && pass.contentEquals(edPassword.getText())) {
-                            Toast.makeText(getApplicationContext(), "usuario correcto", Toast.LENGTH_LONG).show();
+                    if (!TextUtils.isEmpty(edUsuario.getText()) && !TextUtils.isEmpty(edPass.getText())) {
+                        if (user.contentEquals(edUsuario.getText()) && pass.contentEquals(edPass.getText())) {
+                            Toast.makeText(getApplicationContext(), "usuario correcto bienvenido señor "+nombre, Toast.LENGTH_LONG).show();
                             Log.i("usuarioCorrecto", "correcto");
                         } else {
                             Toast.makeText(getApplicationContext(), "usuario incorrecto", Toast.LENGTH_LONG).show();
-                            Log.i("usuarioIncorrecto", "incorrecto");
+                            Log.e("usuarioIncorrecto", "incorrecto");
                         }
-                    }else {
+                    } else {
                         Toast.makeText(getApplicationContext(), "escribe un usuario y contraseña", Toast.LENGTH_LONG).show();
                         Log.e("no digitado", "no digitado");
                     }
