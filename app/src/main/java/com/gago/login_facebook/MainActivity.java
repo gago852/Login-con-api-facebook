@@ -6,14 +6,23 @@ import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+import android.text.TextUtils;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
+
+import com.google.android.material.textfield.TextInputEditText;
 
 public class MainActivity extends AppCompatActivity {
 
-    Button registrarse;
+
+    private String user, pass;
+
+    TextInputEditText edUsuario, edPassword;
+    Button btRegistrarse, btlogueo;
 
 
     @Override
@@ -23,18 +32,53 @@ public class MainActivity extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        registrarse= findViewById(R.id.btRegistrarse);
+        edUsuario = findViewById(R.id.edUsuario);
+        edPassword = findViewById(R.id.edPassword);
+        btlogueo = findViewById(R.id.btLogin);
+        btRegistrarse = findViewById(R.id.btRegistrarse);
 
-        registrarse.setOnClickListener(new View.OnClickListener() {
+        Intent i = getIntent();
+        Log.i("intent", i.toString());
+        Bundle retorno = i.getExtras();
+        user = retorno.getString("usuario","");
+        pass = retorno.getString("password","");
+
+
+        btlogueo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-            Intent i=new Intent(getApplicationContext(),RegistroActivity.class);
-            startActivity(i);
+                if (!TextUtils.isEmpty(user) && !TextUtils.isEmpty(pass)) {
+                    if (!TextUtils.isEmpty(edUsuario.getText()) && !TextUtils.isEmpty(edPassword.getText())) {
+                        if (user.contentEquals(edUsuario.getText()) && pass.contentEquals(edPassword.getText())) {
+                            Toast.makeText(getApplicationContext(), "usuario correcto", Toast.LENGTH_LONG).show();
+                            Log.i("usuarioCorrecto", "correcto");
+                        } else {
+                            Toast.makeText(getApplicationContext(), "usuario incorrecto", Toast.LENGTH_LONG).show();
+                            Log.i("usuarioIncorrecto", "incorrecto");
+                        }
+                    }else {
+                        Toast.makeText(getApplicationContext(), "escribe un usuario y contraseña", Toast.LENGTH_LONG).show();
+                        Log.e("no digitado", "no digitado");
+                    }
+                } else {
+                    Toast.makeText(getApplicationContext(), "tienes que registrarte primero", Toast.LENGTH_LONG).show();
+                    Log.e("no registrado", "no registrado");
+                }
+            }
+        });
+
+
+        btRegistrarse.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(getApplicationContext(), RegistroActivity.class);
+                startActivity(i);
             }
         });
 
 
     }
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
