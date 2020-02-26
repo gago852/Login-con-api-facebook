@@ -1,4 +1,15 @@
 <resources>
-    <string name="app_name">login-facebook</string>
+    <string name="app_name">login to your app</string>
     <string name="action_settings">Settings</string>
+    <string name="user">Username or Email</string>
+    <string name="pass">Password</string>
+    <string name="login">LOG IN</string>
+    <string name="or">OR</string>
+    <string name="registrarse">Registrarse</string>
+    <string name="nombre">Nombre</string>
+    <string name="cancelar">Cancelar</string>
+    <string name="registrar">Registrar</string>
+    <string name="facebook_app_id">appid</string>
+    <string name="fb_login_protocol_scheme">fbappid</string>
+
 </resources>
