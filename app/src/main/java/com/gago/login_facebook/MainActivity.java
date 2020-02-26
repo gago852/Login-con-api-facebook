@@ -86,10 +86,10 @@ public class MainActivity extends AppCompatActivity {
         loginButton.registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
             @Override
             public void onSuccess(LoginResult loginResult) {
-                AccessToken accessToken=AccessToken.getCurrentAccessToken();
-                boolean isLogFace=accessToken != null && !accessToken.isExpired();
-                if (isLogFace){
-                    Toast.makeText(getApplicationContext(),"logueado",Toast.LENGTH_LONG).show();
+                AccessToken accessToken = AccessToken.getCurrentAccessToken();
+                boolean isLogFace = accessToken != null && !accessToken.isExpired();
+                if (isLogFace) {
+                    Toast.makeText(getApplicationContext(), "logueado", Toast.LENGTH_LONG).show();
                 }
             }
 
@@ -126,7 +126,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        callbackManager.onActivityResult(requestCode,resultCode,data);
+        callbackManager.onActivityResult(requestCode, resultCode, data);
     }
 
     @Override
